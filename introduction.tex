@@ -1,4 +1,46 @@
 \section{Introduction}
-This is the first sentence.
+Als duale Studierende der DHBW-Mannheim haben wir eine starke Leidenschaft für Software Engineering in den Bereichen Frontend, Backend und Embedded.
+Hinzu kommt ein großes Interesse an Botanik, insbesondere am Anbau von Chili. 
+Während die erste Leidenschaft ohne Probleme auch in den Praxisphasen in Köln, Augsburg, Braunschweig oder Hamburg ausgelebt werden können, 
+sieht es mit der zweiten Leidenschaft etwas schieriger aus. 
+Da wir nur jeweils drei Monate an einem Standort sind, ist es uns leider nicht möglich, kontinuierlich für die Pflege und das Wachstum unserer Chilipflanzen zu sorgen. 
+\\
+Die Vorlesung Software Engineering hat uns jedoch dazu inspiriert, diese beiden Leidenschaften zu vereinen, um das Problem der Abwesenheit und der damit verbundenen mangelnden Pflege der Pflanzen zu lösen. 
+\\
+Die Idee ist es, Soft- und Hardware zu verwenden, um ein ''Automated Greenhouse`` zu entwickelt welches unsere Pflanzen pflegt, während wir in der Praxis sind. Um einen möglichst hohen Automatisierungsgrad in der Pflanzenpflege zu erreichen, müssen zunächst die Anforderungen an das Projekt definiert werden.
+\\
+Da die Leidenschaft für Software Engineering auch in das Projekt einfließen soll, haben wir uns dafür entschieden, die Anforderungsdefinitionen mit Hilfe von User Stories umzusetzen.
+\\
+\subsection{User Story 1: Automatische Bewässerung}
+Da wir alle zusammen in einer WG wohnen, haben wir das Problem, dass während der Praxisphasen niemand in der WG ist, der eventuell kleine pflegerische Tätigkeiten wie Gießen übernehmen könnte. Hieraus entsteht auch schon die erste User Storry:\\
+\textbf{Als} Gewächshausbesitzer \\
+\textbf{möchte ich} dass die Bewässerung meines Gewächshauses automatisch erfolgt, \\
+\textbf{damit} die Pflanzen auch ohne meine Anwesenheit und meine Zeitinvestition bestmöglich bewässert werden
+\\ \\
+Akzeptanzkriterien: 
+\begin{itemize}
+    \item Es wird die Feuchtigkeit des Bodens gemessen und an den Gewächshauscontroller übertragen.
+    \item Fällt die Feuchtigkeit unter einen eingestellten Schwellwert, so wird eine Pumpe oder Ventil aktiviert und der Boden befeuchtet.
+    \item Die Bewässerungsdauer und -intensität sollen anhand der Bodenfeuchtigkeitsdaten angepasst werden. Bei niedrigerer Feuchtigkeit sollte mehr bewässert werden.
+    \item Es wird nicht überwässert. Sobald der Boden befeuchtet wurde, wird eine gewisse Zeit vor der nächsten Messung abgewartet.
+\end{itemize}
+Aus dieser User Storry ergibt sich, dass wir einen Controller benötigen, der in der Lage ist, über Sensoren und Aktoren mit der Pflanze zu interagieren. Der Controller muss in der Lage sein, einen Feuchtigkeitssensor abzufragen, eine Pumpe anzusteuern und den Feuchtigkeitswert auf einen einstellbaren Wert zu regeln.  
+
+
+\subsection{User Story 2: Licht Steuerung}
+Da wir die Pflanzen in unseren Zimmern stehen lassen wollen und in der Zeit unserer Abwesenheit die Rölläden schließen, müssen wir die Pflanzen mit künstlichem Licht versorgen. 
+\\
+\textbf{Als} Gewächshausbesitzer der gerne die Rolläden geschlossen hat,\\
+\textbf{möchte ich} dass meine Pflanzen mit künstlichem licht versorgt werden, \\
+\textbf{damit} die Pflanzen auch ohne meine Anwesenheit einen optimalen Lichtzyklus haben und gesund wachsen können.
+\\ \\
+Akzeptanzkriterien: 
+\begin{itemize}
+    \item .
+    \item .
+    \item .
+    \item .
+\end{itemize}
+
 
 \pagebreak
