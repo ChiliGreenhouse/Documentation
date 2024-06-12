@@ -1,18 +1,19 @@
 \section{Introduction}
-Als duale Studierende der DHBW-Mannheim haben wir eine starke Leidenschaft für Software Engineering in den Bereichen Frontend, Backend und Embedded.
-Hinzu kommt ein großes Interesse an Botanik, insbesondere am Anbau von Chili. 
-Während die erste Leidenschaft ohne Probleme auch in den Praxisphasen in Köln, Augsburg, Braunschweig oder Hamburg ausgelebt werden können, 
-sieht es mit der zweiten Leidenschaft etwas schieriger aus. 
-Da wir nur jeweils drei Monate an einem Standort sind, ist es uns leider nicht möglich, kontinuierlich für die Pflege und das Wachstum unserer Chilipflanzen zu sorgen. 
+Als duale Studierende der DHBW-Mannheim haben wir eine große Leidenschaft für Software Engineering in den Bereichen Frontend, Backend und Embedded.
+Hinzu kommt ein großes Interesse für Botanik, insbesondere für den Anbau von Chili. 
+Während die erste Leidenschaft auch in den Praxisphasen in Köln, Augsburg, Braunschweig oder Hamburg problemlos ausgelebt werden kann, 
+sieht es bei der zweiten Leidenschaft schon etwas schwieriger aus. 
+Da wir jeweils nur drei Monate an einem Standort sind, ist es uns leider nicht möglich, uns kontinuierlich um die Pflege und das Wachstum unserer Chilipflanzen zu kümmern. 
 \\
-Die Vorlesung Software Engineering hat uns jedoch dazu inspiriert, diese beiden Leidenschaften zu vereinen, um das Problem der Abwesenheit und der damit verbundenen mangelnden Pflege der Pflanzen zu lösen. 
+Die Vorlesung Software Engineering hat uns jedoch dazu inspiriert, diese beiden Leidenschaften zu vereinen, um das Problem der Abwesenheit und der daraus resultierenden mangelnden Pflege der Pflanzen zu lösen. 
 \\
-Die Idee ist es, Soft- und Hardware zu verwenden, um ein ''Automated Greenhouse`` zu entwickelt welches unsere Pflanzen pflegt, während wir in der Praxis sind. Um einen möglichst hohen Automatisierungsgrad in der Pflanzenpflege zu erreichen, müssen zunächst die Anforderungen an das Projekt definiert werden.
+Die Idee ist, mit Hilfe von Soft- und Hardware ein ''Automated Greenhouse`` zu entwickeln, das unsere Pflanzen während der Praxisphasen pflegt. Um einen möglichst hohen Automatisierungsgrad in der Pflanzenpflege zu erreichen, müssen zunächst die Anforderungen an das Projekt definiert werden.
 \\
 Da die Leidenschaft für Software Engineering auch in das Projekt einfließen soll, haben wir uns dafür entschieden, die Anforderungsdefinitionen mit Hilfe von User Stories umzusetzen.
 \\
 \subsection{User Story 1: Automatische Bewässerung}
-Da wir alle zusammen in einer WG wohnen, haben wir das Problem, dass während der Praxisphasen niemand in der WG ist, der eventuell kleine pflegerische Tätigkeiten wie Gießen übernehmen könnte. Hieraus entsteht auch schon die erste User Storry:\\
+Da wir alle zusammen in einer WG wohnen, haben wir das Problem, dass während der Praxisphasen niemand in der WG ist, der eventuell kleinere pflegerische Tätigkeiten, wie z.B. das Gießen, übernehmen könnte. Daraus ergibt sich die erste User Story:
+\\
 \textbf{Als} Gewächshausbesitzer \\
 \textbf{möchte ich} dass die Bewässerung meines Gewächshauses automatisch erfolgt, \\
 \textbf{damit} die Pflanzen auch ohne meine Anwesenheit und meine Zeitinvestition bestmöglich bewässert werden
@@ -24,23 +25,55 @@ Akzeptanzkriterien:
     \item Die Bewässerungsdauer und -intensität sollen anhand der Bodenfeuchtigkeitsdaten angepasst werden. Bei niedrigerer Feuchtigkeit sollte mehr bewässert werden.
     \item Es wird nicht überwässert. Sobald der Boden befeuchtet wurde, wird eine gewisse Zeit vor der nächsten Messung abgewartet.
 \end{itemize}
-Aus dieser User Storry ergibt sich, dass wir einen Controller benötigen, der in der Lage ist, über Sensoren und Aktoren mit der Pflanze zu interagieren. Der Controller muss in der Lage sein, einen Feuchtigkeitssensor abzufragen, eine Pumpe anzusteuern und den Feuchtigkeitswert auf einen einstellbaren Wert zu regeln.  
-
+Aus dieser User Story geht hervor, dass wir einen Controller benötigen, der über Sensoren und Aktoren mit der Pflanze interagieren kann. Der Controller muss in der Lage sein, einen Feuchtigkeitssensor abzufragen, eine Pumpe anzusteuern und den Feuchtigkeitswert auf einen einstellbaren Wert zu regeln.
 
 \subsection{User Story 2: Licht Steuerung}
-Da wir die Pflanzen in unseren Zimmern stehen lassen wollen und in der Zeit unserer Abwesenheit die Rölläden schließen, müssen wir die Pflanzen mit künstlichem Licht versorgen. 
-\\
+Da wir die Pflanzen in unseren Zimmern lassen wollen und die Rollläden während unserer Abwesenheit schließen, müssen wir die Pflanzen mit künstlichem Licht versorgen. 
+\\ \\
 \textbf{Als} Gewächshausbesitzer der gerne die Rolläden geschlossen hat,\\
 \textbf{möchte ich} dass meine Pflanzen mit künstlichem licht versorgt werden, \\
 \textbf{damit} die Pflanzen auch ohne meine Anwesenheit einen optimalen Lichtzyklus haben und gesund wachsen können.
 \\ \\
 Akzeptanzkriterien: 
 \begin{itemize}
-    \item .
-    \item .
-    \item .
-    \item .
+    \item Eine Lampe soll zu bestimmten Zeiten ein- und ausgeschaltet werden.
+    \item Die Zeiten, zu denen die Lampe ein- und ausgeschaltet wird, sollten auch geändert werden können, ohne dass der Gewächshausbesitzer physisch ist.
+\end{itemize}
+Aus dieser User Story geht hervor, dass der Controller in der Lage sein muss, eine Lampe ein- und auszuschalten. 
+Die Tatsache, dass die Zeitwerte auch aus der Ferne geändert werden können sollen, zeigt, dass der Gewächshausbesitzer noch mit dem Controller interagieren können muss.
+
+\subsection{User Story 3: Anzeige von Echtzeit-Messdaten}
+\textbf{Als} Gewächshausbesitzer\\
+\textbf{möchte ich} die Umgebungsparameter in meinem Gewächshaus aus der Ferne überwachen können,\\
+\textbf{damit} ich frühzeitig erkenne, wenn die Wachstumsbedingungen nicht optimal sind, selbst wenn ich physisch nicht anwesend bin.
+\\ \\
+Akzeptanzkriterien: 
+\begin{itemize}
+    \item Die Messdaten, die der Controller erfasst, wie die Temperatur und die Bodenfeuchtigkeit sollen für den Gewächshausbesitzer einsehbar sein.
+    \item Die Daten sollen von einem mobilen Endgerät aus abrufbar sein. 
+    \item Die Daten sollen dabei dem Gewächshausbesitzer einfach und verständlich präsentiert werden.
 \end{itemize}
 
 
+\subsection{User Story 4: Remote Controll}
+\textbf{Als} Gewächshausbesitzer\\
+\textbf{möchte ich} dazu in der Lage sein alle Parameter der Pflege, die beeinflussbar sind, auch aus der Ferne verändern zu können,\\
+\textbf{damit} ich die Wachstumsbedingungen für meine Pflanzen optimieren und ihr Wohlbefinden sicherzustellen kann, selbst wenn ich physisch nicht anwesend bin.
+\\ \\
+Akzeptanzkriterien: 
+\begin{itemize}
+    \item Die Zeiten, zu der die Lampe eingeschaltet ist, soll aus der Ferne einstellbar sein.
+    \item Die Feuchtigkeit, die die Erde meiner Pflanze haben soll, soll aus der Ferne einstellbar sein. 
+    \item Die Parameter sollen durh den Gewächshausbesitzer einfach und verständlich einstellbar sein. 
+\end{itemize}
+
+
+\subsection{Team Bildung}
+Aus den User Stories lässt sich ableiten, dass ein Controller benötigt wird, der die Sensoren abfragt und die Aktoren ansteuert.
+Da die Sensorwerte für den Gewächshausbesitzer auch aus der Ferne einfach und verständlich über ein mobiles Endgerät abrufbar sein sollen, haben wir uns dafür entschieden, die Werte auf einer Webseite zu visualisieren. 
+Dazu muss der Controller in der Lage sein, diese Werte an einen Server zu senden, von dem die Website die Werte abrufen kann. 
+Hierfür wird ein Backend benötigt, das auch dazu verwendet werden kann, die Parameter Zeit und Feuchte, die auf der Website eingestellt werden können, an den Controller zu übergeben.
+\\
+Wir haben beschlossen, unsere Gruppe in drei Teams aufzuteilen. 
+Ein Team kümmert sich um die Entwicklung der Hardware, ein Team um die Entwicklung des Frontends und das letzte Team um die Entwicklung des Backends.
 \pagebreak
