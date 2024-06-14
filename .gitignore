@@ -5,3 +5,4 @@
 *.out
 *.synctex.gz
 *.dvi
+.latexrun.db.lock
