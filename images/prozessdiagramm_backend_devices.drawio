@@ -1,0 +1,215 @@
+<mxfile host="app.diagrams.net" modified="2024-06-14T13:20:32.468Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="aiAiKl4jGQBhiWyOdWWW" version="24.5.4" type="device">
+  <diagram name="Page-1" id="UEBIZrYw3lUsxea4DjVB">
+    <mxGraphModel dx="1972" dy="316" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="-afth7PykaMVxRmtNgvt-14" value="new_device" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="60" y="1410" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-15" value="list_devices" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="462.5" y="1410" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-16" value="get_device" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="220" y="1410" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-17" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-14" target="-afth7PykaMVxRmtNgvt-32" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="1580" as="sourcePoint" />
+            <mxPoint x="110" y="1660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-18" value="new_device: NewDevice" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-17" vertex="1" connectable="0">
+          <mxGeometry x="0.0286" relative="1" as="geometry">
+            <mxPoint x="-28" y="-17" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-19" value="PostgreSQL" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="305" y="1740" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-20" value="&lt;div&gt;HTTP-Code:&lt;/div&gt;&lt;div&gt;400 Bad Request&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="-100" y="1610" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-21" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-32" target="-afth7PykaMVxRmtNgvt-20" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-40" y="1550" as="sourcePoint" />
+            <mxPoint x="10" y="1500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-22" value="&lt;div&gt;nein&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-21" vertex="1" connectable="0">
+          <mxGeometry x="-0.076" y="-3" relative="1" as="geometry">
+            <mxPoint x="6" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-23" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-15" target="-afth7PykaMVxRmtNgvt-48" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="147" y="1480" as="sourcePoint" />
+            <mxPoint x="490" y="1550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7GVY4nxcFDt2cT8Thdf1-1" value="Abfage aller Devices" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="-afth7PykaMVxRmtNgvt-23">
+          <mxGeometry x="-0.1952" y="-2" relative="1" as="geometry">
+            <mxPoint x="2" y="6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-24" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-16" target="-afth7PykaMVxRmtNgvt-32" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="471" y="1490" as="sourcePoint" />
+            <mxPoint x="460" y="1620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-25" value="device_name: String" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-24" vertex="1" connectable="0">
+          <mxGeometry x="0.0286" relative="1" as="geometry">
+            <mxPoint x="17" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-26" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-32" target="-afth7PykaMVxRmtNgvt-28" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="1690" as="sourcePoint" />
+            <mxPoint x="135.7608695652175" y="1820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-27" value="Erstellen des&lt;br&gt;neuen Devices" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-26" vertex="1" connectable="0">
+          <mxGeometry x="0.0262" y="-2" relative="1" as="geometry">
+            <mxPoint x="3" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-28" value="PostgreSQL" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="19.999999999999943" y="1740" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-29" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-32" target="-afth7PykaMVxRmtNgvt-19" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="1920" as="sourcePoint" />
+            <mxPoint x="430" y="1910" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-30" value="Abfrage des Devices&lt;br&gt;mit gegebenem Namen" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-29" vertex="1" connectable="0">
+          <mxGeometry x="-0.0615" relative="1" as="geometry">
+            <mxPoint x="9" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-31" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="191.75" y="1770" as="sourcePoint" />
+            <mxPoint x="193.25" y="1470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-32" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Sind alle JSON-&lt;br&gt;Felder valide?&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="45" y="1600" width="295" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-33" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-28" target="-afth7PykaMVxRmtNgvt-55" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="2000" as="sourcePoint" />
+            <mxPoint x="58" y="1900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-34" value="erfolgreich" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-33" vertex="1" connectable="0">
+          <mxGeometry x="0.1333" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-35" value="&lt;div&gt;HTTP-Code:&lt;/div&gt;&lt;div&gt;409 Conflict&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="-115" y="1860" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-36" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-28" target="-afth7PykaMVxRmtNgvt-35" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="10" y="2000" as="sourcePoint" />
+            <mxPoint x="60" y="1950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-37" value="Unique key (Devicename)&lt;br&gt;existiert bereits" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-36" vertex="1" connectable="0">
+          <mxGeometry x="-0.3408" relative="1" as="geometry">
+            <mxPoint x="-47" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-38" value="&lt;div&gt;HTTP-Code:&lt;/div&gt;&lt;div&gt;500 Internal Server Error&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="142.5" y="1860" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-39" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-28" target="-afth7PykaMVxRmtNgvt-38" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="83" y="1876" as="sourcePoint" />
+            <mxPoint x="-40" y="1829" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-40" value="sonstiger Fehler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-39" vertex="1" connectable="0">
+          <mxGeometry x="-0.3408" relative="1" as="geometry">
+            <mxPoint x="30" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-41" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-19" target="-afth7PykaMVxRmtNgvt-56" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="290" y="1930" as="sourcePoint" />
+            <mxPoint x="343" y="1950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-42" value="erfolgreich" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-41" vertex="1" connectable="0">
+          <mxGeometry x="0.1333" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-43" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-19" target="-afth7PykaMVxRmtNgvt-38" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="347.5" y="1919.4965625" as="sourcePoint" />
+            <mxPoint x="244.375" y="2050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-44" value="sonstiger Fehler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-43" vertex="1" connectable="0">
+          <mxGeometry x="-0.1809" y="2" relative="1" as="geometry">
+            <mxPoint x="-29" y="-15" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-45" value="&lt;div&gt;HTTP-Code:&lt;/div&gt;&lt;div&gt;404 Not Found&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="400" y="1860" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-46" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-19" target="-afth7PykaMVxRmtNgvt-45" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="1850" as="sourcePoint" />
+            <mxPoint x="450" y="1800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-47" value="Kein Eintrag gefunden" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-46" vertex="1" connectable="0">
+          <mxGeometry x="-0.176" relative="1" as="geometry">
+            <mxPoint x="38" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-48" value="PostgreSQL" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="475" y="1530" width="75" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-49" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-48" target="-afth7PykaMVxRmtNgvt-51" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="540" y="1650" as="sourcePoint" />
+            <mxPoint x="490" y="1650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-50" value="erfolgreich" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-49" vertex="1" connectable="0">
+          <mxGeometry x="0.1333" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-51" value="HTTP-Code:&lt;br&gt;200 OK&lt;br&gt;Rückgabe von Liste aller Devices" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="462.5" y="1660" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-52" value="&lt;div&gt;HTTP-Code:&lt;/div&gt;&lt;div&gt;500 Internal Server Error&lt;br&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="340" y="1570" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-53" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="-afth7PykaMVxRmtNgvt-48" target="-afth7PykaMVxRmtNgvt-52" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="315" y="1800" as="sourcePoint" />
+            <mxPoint x="250" y="1834" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-54" value="Fehler" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="-afth7PykaMVxRmtNgvt-53" vertex="1" connectable="0">
+          <mxGeometry x="-0.1809" y="2" relative="1" as="geometry">
+            <mxPoint x="-11" y="-19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-55" value="HTTP-Code:&lt;br&gt;201 Created&lt;br&gt;Location-Header: {URL des neu erstellten Devices}" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="-15" y="1910" width="145" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="-afth7PykaMVxRmtNgvt-56" value="HTTP-Code:&lt;br&gt;200 OK&lt;br&gt;Rückgabe des Devices" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="292.5" y="1920" width="100" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
