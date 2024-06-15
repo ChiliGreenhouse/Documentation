@@ -1,4 +1,6 @@
 \section{Methodik}
+    \label{sec:methodik}
+
     Dieses Kapitel fokussiert sich auf die Zusammenarbeit innerhalb der Gruppe und die verwendeten Methoden und 
     Verfahren. Insbesondere wird auf die inkrementelle Softwareentwicklung beleuchte, welche als wesentliches 
     Modell innerhalb unseres Projektes angewendet wurde. Es wurde aufgrund der Einteilung in Teams gewählt, welche
@@ -31,7 +33,7 @@
         Umgebung erarbeitet. Neben der primären Aufgabe die Anforderungen umzusetzen, geht es bei dem Design auch 
         um die spätere Erweiterbarkeit der Software. Da es sich bei den Anforderungen um ein sehr heterogenes 
         Feld handelt, kann man keine konkrete Methodik angeben, wie die Umsetzung der Anforderungen geplant
-        wurde. Im Folgenden werden bespielhafte Methoden aus dem Hardware- und Frontend-Team vorgestellt. 
+        wurde. Im Folgenden werden bespielhaft einige Methoden auf jedem Team vorgestellt:
         \begin{itemize}
             \item \textbf{Hardware}\\
             Um in der Hardware die Anforderungen umzusetzen, wurden Skizzen per Hand erstellt, um die Systemarchitektur 
@@ -56,6 +58,21 @@
             Keynote. 
 
             \item \textbf{Backend}
+            Das Backend beinhaltet vergleichweise wenig Programmlogik und regelt hauptsächlich den Datenbankzugriff.
+            Deshalb wurde sich für eine Schichtenarchitektur entschieden.
+            Hier werden zwei Schichten, eine Datenbankschicht und eine Serviceschicht verwendet.
+            Die Datenbankschicht stellt wiederverwendbare Funktionen für den Datenbankzugriff bereit.
+            Verwendet werden diese Funktionen dann von den Rest-Endpunkten, welche in sogenannte Services der Serviceschicht aufgeteilt sind.
+
+            Diese Schichtenarchitektur ist anschaulich in Abbildung~\ref{fig:design-backend-layer-architecture} dargestellt.
+            Sie bietet so einige Vorteile, wie die leicht Erweiterbarkeit und Maintainability durch gute Übersichtlichkeit.
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.8\textwidth]{images/backend-layer-architecture.drawio}
+                \caption{Schichtenarchitektur des Backends. Hervorgehoben sind REST-Endpunkte (blau), Services (grün) und Datenbank-Funktionen (lila).}
+                \label{fig:design-backend-layer-architecture}
+            \end{figure}
+
         \end{itemize}
 
         \subsubsection*{Implementierung}

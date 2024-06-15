@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" modified="2024-06-15T14:57:27.718Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:127.0) Gecko/20100101 Firefox/127.0" etag="WBwIyp2PG6bywe6zi83N" version="24.5.4" type="device">
+  <diagram name="Page-1" id="L5UNiaMqHRk8Dxsb6zbN">
+    <mxGraphModel dx="1273" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-1" value="" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="270" y="410" width="407" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-2" value="PostgreSQL" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="438.5" y="320" width="70" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-4" value="create_device" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="277" y="440" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-7" value="list_targets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="377" y="440" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-8" value="create_target" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="477" y="440" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-10" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;...&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="577" y="440" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-11" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-4" target="Towc4nFQ2o1PkAfrNgI3-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="337" y="370" as="sourcePoint" />
+            <mxPoint x="387" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-12" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-7" target="Towc4nFQ2o1PkAfrNgI3-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="567" y="460" as="sourcePoint" />
+            <mxPoint x="617" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-14" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-8" target="Towc4nFQ2o1PkAfrNgI3-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="597" y="390" as="sourcePoint" />
+            <mxPoint x="647" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-15" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-10" target="Towc4nFQ2o1PkAfrNgI3-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="597" y="370" as="sourcePoint" />
+            <mxPoint x="647" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-16" value="Datenbankschicht" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=right;" vertex="1" parent="1">
+          <mxGeometry x="150" y="435" width="110" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-17" value="" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="270" y="540" width="410" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-18" value="Serviceschicht" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;align=right;" vertex="1" parent="1">
+          <mxGeometry x="180" y="590" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-19" value="devices" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="277" y="560" width="173" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-20" value="GET /devices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="280" y="570" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-21" value="POST /devices" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="367" y="570" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-22" value="GET /devices/{name}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="300" y="600" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-23" value="targets" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="460" y="560" width="173" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-24" value="GET /targets" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="467" y="570" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-26" value="GET /targets/current" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="553" y="570" width="75.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-27" value="&lt;font style=&quot;font-size: 23px;&quot;&gt;...&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="637" y="580" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-29" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-20" target="Towc4nFQ2o1PkAfrNgI3-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="560" as="sourcePoint" />
+            <mxPoint x="290" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-30" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-21" target="Towc4nFQ2o1PkAfrNgI3-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="560" as="sourcePoint" />
+            <mxPoint x="280" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-31" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-24" target="Towc4nFQ2o1PkAfrNgI3-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="540" as="sourcePoint" />
+            <mxPoint x="270" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-32" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-26" target="Towc4nFQ2o1PkAfrNgI3-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="660" y="530" as="sourcePoint" />
+            <mxPoint x="710" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Towc4nFQ2o1PkAfrNgI3-33" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1" source="Towc4nFQ2o1PkAfrNgI3-24" target="Towc4nFQ2o1PkAfrNgI3-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="580" as="sourcePoint" />
+            <mxPoint x="442" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,4 +1,121 @@
-\section{Example}
-Example
+\section{Einblick in den Backend-Quellcode}
+    Dieses Kapitel gibt einen Einblick in den Quellcode des Backends.
+    Dazu wird ein bestimmer REST-Endpunkt betrachtet:
+
+    $$
+        \text{\lstinline{POST /api/v0/gh/0/devices/[device_name]/datapoints}}
+    $$
+    Er ist dafür verantwortlich, einen neuen Sensor-Datenpunkt aufzunehmen, wird also regelmäßig von der Hardware aufgerufen.
+    Der URL-Pfad ist zusammengesetzt aus vier Teilen:
+    \begin{itemize}
+        \item \lstinline{/api/v0}: Versionierung der API.
+        \item \lstinline{/gh/0}: Es wird das Greenhouse (gh) mit Index 0 angesprochen\footnote{Dies ist ein Platzhalter für den zukünfigten Multi-Greenhouse Betrieb.}.
+        \item \lstinline{/devices/[device_name]}: Es wird das Sensor-Device mit gegebenem Namen betrachtet.
+        \item \lstinline{/datapoints}: In Verbindung mit dem HTTP Operator \lstinline{POST} heißt dies, dass ein neuer Datenpunkt erstellt werden soll.
+    \end{itemize}
+    Hier hat allerdings nur der Teilpfad \lstinline{/devices/[device_name]/datapoints} Relevanz.
+    Er beinhaltet ein Argument des REST-Endpunktes: Den Namen des Sensor-Devices.
+
+    In Kapitel~\ref{sec:methodik} wurde bereits die Schichtenarchitektur des Backends präsentiert.
+    Diese spiegelt sich im Quellcode gut sichtbar wieder.
+    Zuerst wird die nötige Funktion in der Datenbankschicht betrachtet.
+    Ihr Rust-Code ist in Abbildung~\ref{lst:database-code} zu sehen.
+    In Zeile 1-5 befindet sich der Funktionskopf, welche als Parameter die Datenbankverbindung (conn), den neuen Sensor-Datenpunkt und den Sensor-Devicenamen definiert.
+    Nach einer ersten Typ-Umwandlung folgt der Bau des \lstinline{INSERT} SQL-Queries mithilfe der Rust-Bibliothek \lstinline{diesel}\footnote{siehe https://diesel.rs/}.
+    \lstinline{Diesel} ist ein ORM (object-relational mapping) tool, um u.a. SQL-Queries direkt aus Rust-Code zu bauen.
+    Einige Vorteile sind die Typ-Sicherheit oder ein automatischer Schutz vor SQL-Injections.
+    Zuletzt wird dann, falls der Datenbankaufruf erfolgreich war, der neue Sensor-Datenpunkt zurückgegeben.
+
+    \begin{figure}[H]
+        \centering
+        \begin{minted}[linenos]{Rust}
+pub fn create_datapoint(
+    conn: &mut PgConnection,
+    datapoint: SensorDatapoint,
+    sensor_name: String,
+) -> Result<SensorDatapoint, DatabaseError> {
+    // Umwandlung zu Datenbank-struct
+    let db_datapoint = DbSensorDatapoint::from_model(
+        datapoint,
+        sensor_name
+    );
+
+    // Bau und Ausführung eines SQL-Queries mit diesel
+    // Der ?-Operator bricht die Funktion bei einem Fehler ab.
+    let db_datapoint = db_datapoint
+        .insert_into(super::schema::sensor_datapoints::table)
+        .returning(DbSensorDatapoint::as_returning())
+        .get_result(conn)?; 
+
+    // Rückgabe des neuen Sensor-Datenpunkes
+    Ok(db_datapoint.into())
+}
+        \end{minted}
+        \caption{Rust-Funktion der Datenbankschicht zur Erstellung eines neuen Sensor-Datenpunktes}
+        \label{lst:database-code}
+    \end{figure}
+
+    Als nächstes wird die Funktion der Serviceschicht vorgestellt, welche den zuvor genannten REST-Endpunkt bereitstellt.
+    Ihr Quellcode ist in Abbildung~\ref{lst:endpoint-code} dargestellt.
+    Der Funktionskopf von Zeile 1 - 5 ist hier von besonderer Bedeutung.
+    Die Rust-Bibliothek \lstinline{axum}\footnote{siehe https://github.com/tokio-rs/axum} bietet eine Art Framework für die Erstellung von HTTP-Servern.
+    Sie ist auch dafür verantwortlich, dass die Funktionsparameter richtig gesetzt werden.
+    Es werden von ihr also die Datenbankverbindung (Zeile 2), der Sensor-Name aus dem URL-Pfad (Zeile 3) und die übermittelten JSON-Daten (Zeile 4) überliefert.
+
+    Die Funktion stellt dann die Datenbankverbindung her (Zeile 7), überprüft mit einer Hilfsfunktion ob es sich bei dem angegebenen um ein valides Sensor-Device handelt (Zeile 10) und verpackt erstellt ein neues SensorDatapoint-struct (Zeile 13-16).
+    Dann wird die zuvor vorgestellte Funktion der Datenbankschicht aufgerufen (Zeile 19-23) und je nach Rückgabewert der neu erstelle Datenpunkt oder ein Fehler zurückgegeben.
+
+    \begin{figure}[H]
+        \centering
+        \begin{minted}[linenos]{Rust}
+async fn new_datapoint(
+    State(AppState { database_pool, .. }): State<AppState>,
+    Path(sensor_name): Path<String>,
+    Json(new_datapoint): Json<NewSensorDatapoint>,
+) -> ApiResult<SensorDatapoint, String> {
+    // Herstellen einer Datenbank Verbindung
+    let mut database_connection = database_pool.get().unwrap();
+
+    // Überprüfung: Existiert das Device und ist es vom Typ Sensor?
+    check_device_sensor_type(&mut database_connection, &sensor_name)?;
+
+    // Erstellen des eigentlichen Datapoint-structs
+    let sensor_datapoint = SensorDatapoint {
+        timestamp: Utc::now(),
+        value: new_datapoint.value
+    };
+
+    // Aufruf der zuvor beschriebenen Funktion der Datenbankschicht
+    match database::sensor_datapoint::create_datapoint(
+        &mut database_connection,
+        sensor_datapoint,
+        sensor_name,
+    ) {
+        // Falls Datenbank-Aufruf erfolgreich:
+        Ok(datapoint) => Ok(
+            ApiSuccess::new_with_status(
+                StatusCode::OK,
+                datapoint
+            )),
+        // Falls zu dem aktuellen Zeitpunkt schon ein Datenpunt existiert:
+        Err(DatabaseError::UniqueKeyViolation) => Err(
+            ApiError::new_with_status(
+                StatusCode::CONFLICT,
+                "Failed to create new datapoint.
+                Wait a few seconds before trying again.".to_owned(),
+            )),
+        // Sonstiger Fehler:
+        Err(err) => Err(ApiError::new_unknown(format!("{err:?}"))),
+    }
+}
+        \end{minted}
+        \caption{Rust-Funktion der Serviceschicht, welche den Endpunkt zum Erstellen eines Datenpunktes bereitstellt.}
+        \label{lst:endpoint-code}
+    \end{figure}
+
+    Es ist außerdem wichtig zu erwähnen, dass durch erfolgte Abstraktion zum Teil unsichtbare Programmlogik stattfindet.
+    Wird bspw. wie in Zeile 38 ein unbekannter \lstinline{ApiError} erstellt, wird der Fehler geloggt und der HTTP-Statuscode 500 "Internal Server Error" zurückgegeben.
+    Das gleiche passiert auch bei jeglichen Rust-Panics, welche sich ähnlich wie Exceptions verhalten.
+    So lässt sich der Code ohne Wiederholungen auf die wirklich nötige Programmlogik reduzieren.
 
 \pagebreak
