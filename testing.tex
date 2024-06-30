@@ -1,5 +1,6 @@
 \section{Testplanung}
-Außerhalb von Modultests, welche in allen drei Komponenten durchgeführt wurden, wurden und Systemtests durchgeführt, auf welche sich in diesem Abschnitt fokussiert wird.
+Außerhalb von Modultests, welche in allen drei Komponenten durchgeführt wurden, wurden Systemtests durchgeführt.
+Auf diese wird sich in diesem Abschnitt fokussiert.
 Da alle Interaktionen der Hardware oder des Frontends über die API gehen müssen, steht diese bei der Planung und Betrachtung von Tests im Mittelpuntkt.
 Zuerst wird ein Überblick gegeben, wie die Tests geschrieben werden und im Anschluss wird etwas näher auf die Testplanung eingegangen.
 
@@ -10,12 +11,12 @@ Da sich diese Tests auch ausführen lassen, sofern alle Schritte implementiert s
 Um das Verhalten der API leichter zu testen, wurde eine virtuelle Python Umgebung geschrieben, welche ein Greenhouse simuliert.
 Diese Umgebung kann direkt aus den Tests genutzt werden, um der API Daten zu schicken und die Antworten dieser zu verifizieren.
 
-Im folgenden wird die Planung der Tests und Bildung der Äquivalenzklassen beispielhaft an der API vorgestellt.
+Im folgenden wird die Planung der Tests und damit einhergehende Bildung der Äquivalenzklassen beispielhaft an API Tests vorgestellt.
 
 \subsection{Registrieren von Geräten}
 Wenn ein neuer Sensor oder ein neuer Aktor zu einem Greenhouse hinzugefügt wird, soll dies auch der API mitgeteilt werden.
-Hierfür gibt es einen Endpunkt mit dem man ein Gerät unter einem bestimmten Namen registrieren kann.
-Dabei ergeben sich nur zwei Äquivalenzklassen, nämlich dass bereits ein Gerät mit diesem Namen existiert (GE im folgenden), oder dass ein Gerät mit diesem Name eben noch nicht existiert (GNE im Folgenden):
+Hierfür gibt es einen Endpunkt, mit dem man ein Gerät unter einem bestimmten Namen registrieren kann.
+Dabei ergeben sich nur zwei Äquivalenzklassen: ,,ein Gerät mit diesem Namen existiert bereits'' (GE im folgenden) und ,,ein Gerät mit diesem Name existiert noch nicht'' (GNE im Folgenden):
 
 \begin{center}
 \small
@@ -30,7 +31,7 @@ Erwarteter Wert&HTTP 409&HTTP 201 \\
 \end{tabular}
 \end{center}
 
-Eine Implementierung des Verhaltens der Klasse GE in der Sprache Gherkin könnte folgendermaßen aussehen
+Eine Implementierung des Verhaltens der Klasse GE in der Sprache Gherkin könnte folgendermaßen aussehen:
 \begin{figure}[H]
     \begin{minted}[linenos]{gherkin}
 Scenario: Creating a device with a name that already exists    
@@ -44,9 +45,10 @@ Scenario: Creating a device with a name that already exists
 
 \subsection{Senden von Datenpunkten}
 Da sich im letzten Beispiel nur zwei Äquivalenzklassen ergaben, welche sich nicht kombinieren lassen, wird im Folgenden ein etwas komplizierteres Beispiel betrachtet.
-Beim Senden von Datenpunkten muss wieder der Name eines Geräts angegeben werden, jedoch muss überprüft werden ob das Gerät vom Typ Sensor ist, da nur diese Datenpunkte senden dürfen. 
+Beim Senden von Datenpunkten muss wieder der Name eines Geräts angegeben werden, jedoch muss überprüft werden ob das Gerät vom Typ Sensor ist.
+Dies hat den Grund, dass Daten nur von Sensoren gesendet werden dürfen. 
 
-Hierbei ergeben sich folgende Äquivalenzklassen: Ein Gerät mit dem Namen existiert (GE), Ein Gerät mit dem Namen existiert nicht (GNE), Das Gerät ist vom Typ Sensor (TS), Das Gerät ist nicht vom Typ Sensor (NTS).
+Hierbei ergeben sich folgende Äquivalenzklassen: ,,ein Gerät mit dem Namen existiert'' (GE), ,,ein Gerät mit dem Namen existiert nicht'' (GNE), ,,das Gerät ist vom Typ Sensor'' (TS) ,,und das Gerät ist nicht vom Typ Sensor'' (NTS).
 Diese Äquivalenzklassen lassen sich nun auf folgende Weisen kombinieren:
 
 \begin{center}
@@ -82,11 +84,32 @@ Eine mögliche Implementierung eines Tests zur Äquivalenzklasse GE+NTS könnte 
 \begin{figure}[H]
     \begin{minted}[linenos]{gherkin}
 Scenario: A device of type actuator tries to record a datapoint
-    Given a device lamp exists
-    And the device lamp is of type actuator
+    Given a device with name lamp exists
+    And the device is of type actuator
     When the device tries to record a datapoint
     Then the API should emit a negative response with HTTP code 422
     \end{minted}
 \end{figure}
 
 Die Schritte aus diesem Test sind per Parametrisierung wiederverwendbar gestaltet um in den Tests für die anderen Äquivalenzklassen erneut benutzt werden zu können.
+Eine vereinfachte Implementierung der Schritte könnte folgendermaßen aussehen:
+\begin{figure}[H]
+    \begin{minted}[linenos]{python}
+@given("A device {device_name} exists")
+def ensure_device_exists(device_name: str):
+    assert(greenhouse.has_device("lamp")) 
+    context.device = greenhouse.get_device("lamp")
+
+@given("the device is of type {device_type}")
+def ensure_device_is_of_type(device_type: str):
+    assert(context.device.type == DeviceType.ACTUATOR)
+
+@when("the device tries to record a datapoint")
+def device_record_datapoint():
+    context.response = greenhouse.record_datapoint(context.device)
+
+@then("the API should emit a {} response with code {code})
+def api_should_respond_with(code: int):
+    assert(context.response.code == code)
+    \end{minted}
+\end{figure}
